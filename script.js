@@ -1,3 +1,4 @@
+//MAJOR VARIABLE DECLARATIONS
 var body = document.body;
 // These variables are visible on all pages of the quiz.
 var quizHeader = document.createElement("header");
@@ -61,6 +62,7 @@ var initialsLabel = document.createElement("label");
 var initialsEntry = document.createElement("input");
 var submitButton = document.createElement("button");
 
+//TEXT CONTENT
 // Header text content
 highScoreLink.textContent = "View Highscores";
 timer.textContent = "Time: 0";
@@ -93,7 +95,7 @@ q4Opt2.textContent = ".sort"
 q4Opt3.textContent = ".slice"
 q4Opt4.textContent = ".replace"
 // Question five text content
-questFiveTitle.textContent = "which of these are JavaScript arithmetic operators?"
+questFiveTitle.textContent = "Which of these are JavaScript arithmetic operators?"
 q5Opt1.textContent = "++" //Correct
 q5Opt2.textContent = "And"
 q5Opt3.textContent = "+-"
@@ -104,7 +106,7 @@ scoreReadout.textContent = "Your score this time is: " + rightAnswers + "!"
 initialsLabel.textContent = "Please enter your initials below!"
 submitButton.textContent = "Submit!"
 
-
+//APPENDS
 // Appending header to the document.
 body.appendChild(quizHeader);
 quizHeader.appendChild(highScoreLink);
@@ -163,6 +165,8 @@ scoreInteract.appendChild(initialsLabel);
 scoreInteract.appendChild(initialsEntry);
 scoreInteract.appendChild(submitButton);
 
+
+//ATTRIBUTE SETTINGS
 // Styling for the header.
 quizHeader.setAttribute("style", "display: flex; justify-content: space-between;");
 timer.setAttribute("style", "margin-top: 0px;");
@@ -170,13 +174,13 @@ timer.setAttribute("style", "margin-top: 0px;");
 landPageBox.setAttribute("id", "landPage");
 // landPageBox.setAttribute("style", "display: none");
 landTitle.setAttribute("style", "text-align: center;");
-landExplanation.setAttribute("style", "text-align: center;");
-startButton.setAttribute("style", "position: absolute; left: 47%; color: white; background-color: purple");
+landExplanation.setAttribute("style", "text-align: center; font-size: 19px; width: 50%; margin-left: 25%;");
+startButton.setAttribute("style", "position: absolute; left: 48%; color: white; background-color: purple");
 // Styling for question one.
 questOneBox.setAttribute("id", "questOne");
 questOneBox.setAttribute("style", "display: none");
 questOneTitle.setAttribute("style", "text-align: center;");
-questOneButtons.setAttribute("style", "display: flex; position: absolute; flex-direction: column; left: 40%; width: 25%")
+questOneButtons.setAttribute("style", "display: flex; position: absolute; flex-direction: column; left: 36%; width: 25%")
 q1Opt1.setAttribute("style", "color: white; background-color: purple");
 q1Opt2.setAttribute("style", "color: white; background-color: purple");
 q1Opt3.setAttribute("style", "color: white; background-color: purple");
@@ -185,7 +189,7 @@ q1Opt4.setAttribute("style", "color: white; background-color: purple");
 questTwoBox.setAttribute("id", "questTwo");
 questTwoBox.setAttribute("style", "display: none");
 questTwoTitle.setAttribute("style", "text-align: center;");
-questTwoButtons.setAttribute("style", "display: flex; position: absolute; flex-direction: column; left: 40%; width: 25%")
+questTwoButtons.setAttribute("style", "display: flex; position: absolute; flex-direction: column; left: 36%; width: 25%")
 q2Opt1.setAttribute("style", "color: white; background-color: purple");
 q2Opt2.setAttribute("style", "color: white; background-color: purple");
 q2Opt3.setAttribute("style", "color: white; background-color: purple");
@@ -194,7 +198,7 @@ q2Opt4.setAttribute("style", "color: white; background-color: purple");
 questThreeBox.setAttribute("id", "questThree");
 questThreeBox.setAttribute("style", "display: none");
 questThreeTitle.setAttribute("style", "text-align: center;");
-questThreeButtons.setAttribute("style", "display: flex; position: absolute; flex-direction: column; left: 40%; width: 25%")
+questThreeButtons.setAttribute("style", "display: flex; position: absolute; flex-direction: column; left: 36%; width: 25%")
 q3Opt1.setAttribute("style", "color: white; background-color: purple");
 q3Opt2.setAttribute("style", "color: white; background-color: purple");
 q3Opt3.setAttribute("style", "color: white; background-color: purple");
@@ -203,7 +207,7 @@ q3Opt4.setAttribute("style", "color: white; background-color: purple");
 questFourBox.setAttribute("id", "questFour");
 questFourBox.setAttribute("style", "display: none");
 questFourTitle.setAttribute("style", "text-align: center;");
-questFourButtons.setAttribute("style", "display: flex; position: absolute; flex-direction: column; left: 40%; width: 25%")
+questFourButtons.setAttribute("style", "display: flex; position: absolute; flex-direction: column; left: 36%; width: 25%")
 q4Opt1.setAttribute("style", "color: white; background-color: purple");
 q4Opt2.setAttribute("style", "color: white; background-color: purple");
 q4Opt3.setAttribute("style", "color: white; background-color: purple");
@@ -212,7 +216,7 @@ q4Opt4.setAttribute("style", "color: white; background-color: purple");
 questFiveBox.setAttribute("id", "questFive");
 questFiveBox.setAttribute("style", "display: none");
 questFiveTitle.setAttribute("style", "text-align: center;");
-questFiveButtons.setAttribute("style", "display: flex; position: absolute; flex-direction: column; left: 40%; width: 25%")
+questFiveButtons.setAttribute("style", "display: flex; position: absolute; flex-direction: column; left: 36%; width: 25%")
 q5Opt1.setAttribute("style", "color: white; background-color: purple");
 q5Opt2.setAttribute("style", "color: white; background-color: purple");
 q5Opt3.setAttribute("style", "color: white; background-color: purple");
@@ -220,15 +224,17 @@ q5Opt4.setAttribute("style", "color: white; background-color: purple");
 // Style for Score page.
 scoreBox.setAttribute("id", "scoreBox");
 scoreBox.setAttribute("style", "display: none; text-align: center;");
-scoreReadout.setAttribute("style", "text-align: center;");
-scoreInteract.setAttribute("style", "display: flex; position: absolute; flex-direction: column; left: 37%; width: 25%");
+scoreTitle.setAttribute("style", "text-align: center;")
+scoreReadout.setAttribute("style", "text-align: center; font-size: 19px;");
+scoreInteract.setAttribute("style", "display: flex; position: absolute; flex-direction: column; left: 25%; width: 50%");
 initialsLabel.setAttribute("for", "initialsEntry");
-initialsLabel.setAttribute("style", "width: 100%");
+initialsLabel.setAttribute("style", "width: 100%; display: flex; justify-content: center; font-size: 19px;");
 initialsEntry.setAttribute("id", "initialsEntry");
 initialsEntry.setAttribute("name", "initialsEntry");
-initialsEntry.setAttribute("style", "width: 65%;");
-submitButton.setAttribute("style", "width: 65%; color: white; background-color: purple");
+initialsEntry.setAttribute("style", "width: 65%; display: flex; position: relative; left: 15%; justify-content: center; margin: 2%;");
+submitButton.setAttribute("style", "width: 65%; color: white; background-color: purple; display: flex; position: relative; left: 15.5%; justify-content: center; margin: 2%;");
 
+// FUNCTIONS
 //This function controls the countdown clock.
 function countdown() {
     timeRem = 75
@@ -259,7 +265,7 @@ startButton.onclick = function (event) {
     questOneBox.style.display = "block";
     countdown();
 }
-// This command activates when the correct option is selected for Question One.
+// This command activates when the *correct* option is selected for Question One.
 q1Opt2.onclick = function (event) {
     event.preventDefault();
     questOneBox.style.display = "none";
@@ -268,7 +274,31 @@ q1Opt2.onclick = function (event) {
     console.log(rightAnswers);
 }
 
-// This command activates when the correct option is selected for Question Two.
+//The following commands activate when the *wrong* option is selected for Question One.
+q1Opt1.onclick = function (event) {
+    event.preventDefault();
+    questOneBox.style.display = "none";
+    questTwoBox.style.display = "block";
+    timeRem = timeRem - 10;
+    console.log(rightAnswers);
+}
+q1Opt3.onclick = function (event) {
+    event.preventDefault();
+    questOneBox.style.display = "none";
+    questTwoBox.style.display = "block";
+    timeRem = timeRem - 10;
+    console.log(rightAnswers);
+}
+
+q1Opt4.onclick = function (event) {
+    event.preventDefault();
+    questOneBox.style.display = "none";
+    questTwoBox.style.display = "block";
+    timeRem = timeRem - 10;
+    console.log(rightAnswers);
+}
+
+// This command activates when the *correct* option is selected for Question Two.
 q2Opt4.onclick = function (event) {
     event.preventDefault();
     questTwoBox.style.display = "none";
@@ -276,6 +306,30 @@ q2Opt4.onclick = function (event) {
     rightAnswers++;
     console.log(rightAnswers);
 }
+
+// These commands activate when the *wrong* option is selected for Question Two.
+q2Opt1.onclick = function (event) {
+    event.preventDefault();
+    questTwoBox.style.display = "none";
+    questThreeBox.style.display = "block";
+    timeRem = timeRem - 10;
+    console.log(rightAnswers);
+}
+q2Opt2.onclick = function (event) {
+    event.preventDefault();
+    questTwoBox.style.display = "none";
+    questThreeBox.style.display = "block";
+    timeRem = timeRem - 10;
+    console.log(rightAnswers);
+}
+q2Opt3.onclick = function (event) {
+    event.preventDefault();
+    questTwoBox.style.display = "none";
+    questThreeBox.style.display = "block";
+    timeRem = timeRem - 10;
+    console.log(rightAnswers);
+}
+
 // This command activates when the correct option is selected for Question Three.
 q3Opt3.onclick = function (event) {
     event.preventDefault();
@@ -284,12 +338,59 @@ q3Opt3.onclick = function (event) {
     rightAnswers++;
     console.log(rightAnswers);
 }
+
+// These commands activate when the *wrong* options are selected for Question Three.
+q3Opt1.onclick = function (event) {
+    event.preventDefault();
+    questThreeBox.style.display = "none";
+    questFourBox.style.display = "block";
+    timeRem = timeRem - 10;
+    console.log(rightAnswers);
+}
+q3Opt2.onclick = function (event) {
+    event.preventDefault();
+    questThreeBox.style.display = "none";
+    questFourBox.style.display = "block";
+    timeRem = timeRem - 10;
+    console.log(rightAnswers);
+}
+q3Opt4.onclick = function (event) {
+    event.preventDefault();
+    questThreeBox.style.display = "none";
+    questFourBox.style.display = "block";
+    timeRem = timeRem - 10;
+    console.log(rightAnswers);
+}
+
 // This command activates when the correct option is selected for Question Four.
 q4Opt1.onclick = function (event) {
     event.preventDefault();
     questFourBox.style.display = "none";
     questFiveBox.style.display = "block";
     rightAnswers++;
+    console.log(rightAnswers);
+}
+
+// These commands activate when the *wrong* option is selected for Question Four.
+q4Opt2.onclick = function (event) {
+    event.preventDefault();
+    questFourBox.style.display = "none";
+    questFiveBox.style.display = "block";
+    timeRem = timeRem - 10;
+    console.log(rightAnswers);
+}
+q4Opt3.onclick = function (event) {
+    event.preventDefault();
+    questFourBox.style.display = "none";
+    questFiveBox.style.display = "block";
+    timeRem = timeRem - 10;
+    console.log(rightAnswers);
+}
+q4Opt4.onclick = function (event) {
+    event.preventDefault();
+    questFourBox.style.display = "none";
+    questFiveBox.style.display = "block";
+    timeRem = timeRem - 10;
     console.log(rightAnswers);
 }
 // This command activates when the correct option is selected for Question Five.
@@ -299,6 +400,35 @@ q5Opt1.onclick = function (event) {
     questFiveBox.style.display = "none";
     scoreBox.style.display = "block";
     rightAnswers++;
+    var quizScore = (rightAnswers * 20);
+    console.log(rightAnswers);
+    scoreReadout.textContent = "Your score this time is: " + quizScore + "%!"
+}
+
+// These commands activate when the *wrong* option is selected for Question Five.
+q5Opt2.onclick = function (event) {
+    event.preventDefault();
+    timeRem = 1;
+    questFiveBox.style.display = "none";
+    scoreBox.style.display = "block";
+    var quizScore = (rightAnswers * 20);
+    console.log(rightAnswers);
+    scoreReadout.textContent = "Your score this time is: " + quizScore + "%!"
+}
+q5Opt3.onclick = function (event) {
+    event.preventDefault();
+    timeRem = 1;
+    questFiveBox.style.display = "none";
+    scoreBox.style.display = "block";
+    var quizScore = (rightAnswers * 20);
+    console.log(rightAnswers);
+    scoreReadout.textContent = "Your score this time is: " + quizScore + "%!"
+}
+q5Opt4.onclick = function (event) {
+    event.preventDefault();
+    timeRem = 1;
+    questFiveBox.style.display = "none";
+    scoreBox.style.display = "block";
     var quizScore = (rightAnswers * 20);
     console.log(rightAnswers);
     scoreReadout.textContent = "Your score this time is: " + quizScore + "%!"
