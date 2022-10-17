@@ -61,6 +61,17 @@ var scoreInteract = document.createElement("div");
 var initialsLabel = document.createElement("label");
 var initialsEntry = document.createElement("input");
 var submitButton = document.createElement("button");
+// These are the High Score Page elements.
+var quizScore = (rightAnswers * 20);
+var playerInit = "";
+var playerScore = {};
+var highScoreAmount = 10;
+var highScoresList = []
+var hiScoreTitle = document.createElement("h1");
+var hiScoreList = document.createElement("ol");
+var goBackBtn = document.createElement("button");
+var clearScoresBtn = document.createElement("button");
+
 
 //TEXT CONTENT
 // Header text content
@@ -105,6 +116,10 @@ scoreTitle.textContent = "Quiz complete!"
 scoreReadout.textContent = "Your score this time is: " + rightAnswers + "!"
 initialsLabel.textContent = "Please enter your initials below!"
 submitButton.textContent = "Submit!"
+// High Score page 
+hiScoreTitle.textContent = "Highscores"
+goBackBtn.textContent = "Go Back"
+clearScoresBtn.textContent = "Clear Highscores"
 
 //APPENDS
 // Appending header to the document.
@@ -164,12 +179,19 @@ scoreBox.appendChild(scoreInteract);
 scoreInteract.appendChild(initialsLabel);
 scoreInteract.appendChild(initialsEntry);
 scoreInteract.appendChild(submitButton);
+//Appends for High Score page.
+body.appendChild(hiScoresBox);
+hiScoresBox.appendChild(hiScoreTitle);
+hiScoresBox.appendChild(hiScoreList);
+hiScoresBox.appendChild(goBackBtn);
+hiScoresBox.appendChild(clearScoresBtn);
 
 
 //ATTRIBUTE SETTINGS
 // Styling for the header.
 quizHeader.setAttribute("style", "display: flex; justify-content: space-between;");
 timer.setAttribute("style", "margin-top: 0px;");
+highScoreLink.setAttribute("href", "#hiScoresBox")
 // Styling for the landing page.
 landPageBox.setAttribute("id", "landPage");
 // landPageBox.setAttribute("style", "display: none");
@@ -233,6 +255,13 @@ initialsEntry.setAttribute("id", "initialsEntry");
 initialsEntry.setAttribute("name", "initialsEntry");
 initialsEntry.setAttribute("style", "width: 65%; display: flex; position: relative; left: 15%; justify-content: center; margin: 2%;");
 submitButton.setAttribute("style", "width: 65%; color: white; background-color: purple; display: flex; position: relative; left: 15.5%; justify-content: center; margin: 2%;");
+// Style for High Scores Page.
+hiScoresBox.setAttribute("id", "hiScoresBox");
+hiScoresBox.setAttribute("style", "display: none; text-align: center;");
+hiScoreTitle.setAttribute("style", "text-align: center;");
+// hiScoreList.setAttribute("style", "");
+goBackBtn.setAttribute("style", "width: 25%; color: white; background-color: purple; display: flex; position: relative; left: 35%; justify-content: center; margin: 2%;")
+clearScoresBtn.setAttribute("style", "width: 25%; color: white; background-color: purple; display: flex; position: relative; left: 35%; justify-content: center; margin: 2%;");
 
 // FUNCTIONS
 //This function controls the countdown clock.
@@ -249,13 +278,62 @@ function countdown() {
             questThreeBox.style.display = "none";
             questFourBox.style.display = "none";
             questFiveBox.style.display = "none";
+            hiScoresBox.style.display = "none";
             scoreBox.style.display = "block";
             // This ensures that when the time reaches zero whatever score was reached is logged.
-            var quizScore = (rightAnswers * 20);
+            quizScore = (rightAnswers * 20);
             scoreReadout.textContent = "Your score this time is: " + quizScore + "%!"   
         }
     }, 1000);
 }
+
+    //This function saves the scores to storage.
+    function saveScoresToStorage (score) {
+        highScoresList = JSON.parse(localStorage.getItem("scores")) || [];
+        if ((score.score != undefined)) {
+            highScoresList.push(score);
+        }
+        localStorage.setItem("scores", JSON.stringify(highScoresList));
+    }
+
+function makeScoreList (root, arr) {
+    var listItem;
+    root.appendChild(hiScoreList);
+    arr.forEach(function(item) {
+        if (Array.isArray(item)) {
+            makeScoreList(listItem, item);
+            return;
+        };
+        listItem = document.createElement('li');
+        listItem.textContent= `Player: ${item.initials} \n Score: ${item.score}`;
+        listItem.setAttribute("style", "text-align: center; font-size: 19px;");
+        hiScoreList.appendChild(listItem);
+    });
+};
+
+//This moves to the high scores page when players click on the "View Highscores," link.
+//Known error; if the quiz is initiated jumps to the "Score," page instead. Clicking link from Score page should go to the HighScores page.
+highScoreLink.onclick = function (event) {
+    event.preventDefault();
+    if ((hiScoresBox.style.display == "none") && (timeRem == 0)) {
+    landPageBox.style.display = "none";
+    questOneBox.style.display = "none";
+    questTwoBox.style.display = "none";
+    questThreeBox.style.display = "none"; 
+    questFourBox.style.display = "none";
+    questFiveBox.style.display = "none";
+    scoreBox.style.display = "none";
+    hiScoresBox.style.display = "block";
+    timeRem = 1;
+    saveScoresToStorage (playerScore);
+    highScoresList.sort((a,b) => b.score - a.score);
+    console.log(highScoresList);
+    makeScoreList(hiScoresBox, highScoresList);
+    } else {
+        location.reload();
+    }
+}
+
 
 
 // This initiates the quiz.
@@ -400,7 +478,7 @@ q5Opt1.onclick = function (event) {
     questFiveBox.style.display = "none";
     scoreBox.style.display = "block";
     rightAnswers++;
-    var quizScore = (rightAnswers * 20);
+    quizScore = (rightAnswers * 20);
     console.log(rightAnswers);
     scoreReadout.textContent = "Your score this time is: " + quizScore + "%!"
 }
@@ -411,7 +489,7 @@ q5Opt2.onclick = function (event) {
     timeRem = 1;
     questFiveBox.style.display = "none";
     scoreBox.style.display = "block";
-    var quizScore = (rightAnswers * 20);
+    quizScore = (rightAnswers * 20);
     console.log(rightAnswers);
     scoreReadout.textContent = "Your score this time is: " + quizScore + "%!"
 }
@@ -420,7 +498,7 @@ q5Opt3.onclick = function (event) {
     timeRem = 1;
     questFiveBox.style.display = "none";
     scoreBox.style.display = "block";
-    var quizScore = (rightAnswers * 20);
+    quizScore = (rightAnswers * 20);
     console.log(rightAnswers);
     scoreReadout.textContent = "Your score this time is: " + quizScore + "%!"
 }
@@ -429,7 +507,42 @@ q5Opt4.onclick = function (event) {
     timeRem = 1;
     questFiveBox.style.display = "none";
     scoreBox.style.display = "block";
-    var quizScore = (rightAnswers * 20);
     console.log(rightAnswers);
     scoreReadout.textContent = "Your score this time is: " + quizScore + "%!"
+}
+// This controls the actions of what happens when the the player hits, "Submit" on the score page.
+submitButton.onclick = function (event) {
+    event.preventDefault();
+    //Moves to hi Scores page
+    scoreBox.style.display = "none";
+    hiScoresBox.style.display = "block";
+    // Sets Initials
+    if (initialsEntry.value != "") {
+    playerInit = initialsEntry.value;
+    } else {
+        playerInit = "Anon"
+    }
+    playerScore = {
+        initials: playerInit,
+        score: quizScore
+    }
+    saveScoresToStorage (playerScore);
+    highScoresList.sort((a,b) => b.score - a.score);
+    console.log(highScoresList);
+
+    makeScoreList(hiScoresBox, highScoresList);
+}
+
+
+// This sends the user back to the first page when they hit, "Go Back".
+goBackBtn.onclick = function (event) {
+    event.preventDefault();
+    location.reload();
+}
+
+// This will clear all high scores.
+clearScoresBtn.onclick = function (event) {
+    event.preventDefault();
+    localStorage.clear();
+    location.reload();
 }
